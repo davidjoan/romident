@@ -1,0 +1,34 @@
+Patient:
+  tableName:                           t_patient
+  actAs:
+    SluggableExt:                      { fields: [ firstname ] }
+    Timestampable:
+  columns:
+    id:                                { type: integer  , length: 20 , primary: true    , autoincrement: true                                                  }
+    holder_id:                         { type: integer  , length: 20                    , notnull: false                                                       }
+    dentist_id:                        { type: integer  , length: 20                    , notnull: false                                                       }        
+    firstname:                         { type: string   , length: 100                   , notnull: true                                                        } 
+    lastname:                          { type: string   , length: 100                   , notnull: true                                                        }
+    gender:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           }
+    date_of_birth:                     { type: timestamp                                                                                                       }    
+    description:                       { type: string   , length: 5000                  , notnull: false, default: ''                                          }                                                       
+    treatments:                        { type: string   , length: 5000                  , notnull: false                                                       }
+    brush_teeth:                       { type: string   , length: 100                   , notnull: false                                                       }
+    different_brush:                   { type: string   , length: 100                   , notnull: false                                                       }
+    consultation:                      { type: string   , length: 5000                  , notnull: false                                                       }
+    type:                              { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           }
+    active:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           }
+  indexes:
+    i_firstname:                       { fields: [ firstname ]                                                                                                 }
+    i_lastname:                        { fields: [ lastname ]                                                                                                  }
+    i_active:                          { fields: [ active ]                                                                                                    }
+    i_type:                            { fields: [ type ]                                                                                                      }    
+  relations:
+    Holder:                            { class: Holder  , local  : holder_id    , foreign: id       , type: one , alias:  Holder    , onDelete: CASCADE, onUpdate: CASCADE }
+    Dentist:                           { class: Dentist , local  : dentist_id   , foreign: id       , type: one , alias:  Dentist   , onDelete: CASCADE, onUpdate: CASCADE }
+    MedicalHistory:                    { class: MedicalHistory , local: patient_id  , foreign: medical_history_id , refClass: PatientMedicalHistory , alias: MedicalHistories }
+    DentalHistory:                     { class: DentalHistory  , local: patient_id  , foreign: dental_history_id , refClass: PatientDentalHistory , alias: DentalHistories }
+  options:
+    symfony:                           { filter: false, form: true }
+    boolean_columns:                   [ active, gender, type ]
+    

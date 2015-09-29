@@ -1,0 +1,247 @@
+###########################
+########## Appointment ####
+###########################
+
+
+appointment_list:
+  url:             /listar/citas/:filter_by/:filter/:order_by/:order/:max/:page
+  param:           { module: Appointment, action: list, filter_by: title, filter: 0, order_by: created_at, order: desc, max: 20, page: 1, rflow: on }
+  requirements:    { filter_by: \w+, filter: '[^\/^\s]+', order_by: \w+, order: \w+, max: \d+, page: \d+ }
+
+appointment_new:
+  url:             /nueva/cita
+  param:           { module: Appointment, action: edit }
+
+appointment_edit:
+  url:             /editar/cita/:slug
+  param:           { module: Appointment, action: edit }
+  requirements:    { slug: '[\w-]+' }
+
+appointment_delete:
+  url:             /eliminar/cita/:slug
+  param:           { module: Appointment, action: delete }
+  requirements:    { slug: '[\w-,]+' }
+  
+  
+#appointment
+appointment_citas:
+  url:             /appointment/citas
+  param:           { module: Appointment, action: citas, secure: false }
+
+appointment_load_patients:
+  url:             /appointment/carga_de_pacientes
+  param:           { module: Appointment, action: loadPatients, secure: false }
+  
+appointment_show:
+  url:             /mostrar/cita/:slug
+  param:           { module: Appointment, action: show }
+  requirements:    { slug: \w+ }
+  
+
+#######################
+########## Dentist ####
+#######################
+
+#patient
+dentist_show:
+  url:             /mostrar/dentista/:slug
+  param:           { module: Dentist, action: show }
+  requirements:    { slug: \w+ }
+
+dentist_list:
+  url:             /lista/dentistas/:filter_by/:filter/:order_by/:order/:max/:page
+  param:           { module: Dentist, action: list, filter_by: firstname, filter: 0, order_by: id, order: a, max: 20, page: 1, rflow: on }
+  requirements:    { filter_by: \w+, filter: '[^\/^\s]+', order_by: \w+, order: \w+, max: \d+, page: \d+ }
+
+dentist_new:
+  url:             /nuevo/dentista
+  param:           { module: Dentist, action: edit }
+
+dentist_edit:
+  url:             /editar/dentista/:slug
+  param:           { module: Dentist, action: edit }
+  requirements:    { slug: '[\w-]+' }
+
+dentist_delete:
+  url:             /eliminar/dentista/:slug
+  param:           { module: Dentist, action: delete }
+  requirements:    { slug: '[\w-,]+' }
+
+
+#######################
+########## Patient ####
+#######################
+
+
+patient_load_holders:
+  url:             /paciente/carga_de_titulares
+  param:           { module: Patient, action: loadHolders, secure: false }
+
+patient_load_dentists:
+  url:             /paciente/carga_de_dentistas
+  param:           { module: Patient, action: loadDentists, secure: false }
+
+patient_print:
+  url:             /paciente/imprimir/:slug
+  param:           { module: Patient, action: print }
+  requirements:    { slug: \w+ }
+
+#patient
+patient_show:
+  url:             /mostrar/paciente/:slug
+  param:           { module: Patient, action: show }
+  requirements:    { slug: \w+ }
+
+patient_list:
+  url:             /lista/pacientes/:filter_by/:filter/:order_by/:order/:max/:page
+  param:           { module: Patient, action: list, filter_by: firstname, filter: 0, order_by: id, order: a, max: 20, page: 1, rflow: on }
+  requirements:    { filter_by: \w+, filter: '[^\/^\s]+', order_by: \w+, order: \w+, max: \d+, page: \d+ }
+
+patient_new:
+  url:             /nuevo/paciente
+  param:           { module: Patient, action: edit }
+
+patient_edit:
+  url:             /editar/paciente/:slug
+  param:           { module: Patient, action: edit }
+  requirements:    { slug: '[\w-]+' }
+
+patient_delete:
+  url:             /eliminar/paciente/:slug
+  param:           { module: Patient, action: delete }
+  requirements:    { slug: '[\w-,]+' }
+
+#######################
+########## Holder #####
+#######################
+
+#holder
+holder_show:
+  url:             /mostrar/titular/:slug
+  param:           { module: Holder, action: show }
+  requirements:    { slug: \w+ }
+
+holder_list:
+  url:             /lista/titulares/:filter_by/:filter/:order_by/:order/:max/:page
+  param:           { module: Holder, action: list, filter_by: firstname, filter: 0, order_by: id, order: a, max: 20, page: 1, rflow: on }
+  requirements:    { filter_by: \w+, filter: '[^\/^\s]+', order_by: \w+, order: \w+, max: \d+, page: \d+ }
+
+holder_new:
+  url:             /nuevo/titular
+  param:           { module: Holder, action: edit }
+
+holder_edit:
+  url:             /editar/titular/:slug
+  param:           { module: Holder, action: edit }
+  requirements:    { slug: '[\w-]+' }
+
+holder_delete:
+  url:             /eliminar/titular/:slug
+  param:           { module: Holder, action: delete }
+  requirements:    { slug: '[\w-,]+' }
+
+############################
+########## User ############
+############################
+
+#Document
+user_show:
+  url:             /mostrar/usuario/:slug
+  param:           { module: User, action: show }
+  requirements:    { slug: \w+ }
+
+user_list:
+  url:             /lista/usuarios/:filter_by/:filter/:order_by/:order/:max/:page
+  param:           { module: User, action: list, filter_by: id, filter: 0, order_by: id, order: d, max: 20, page: 1, rflow: on }
+  requirements:    { filter_by: \w+, filter: '[^\/^\s]+', order_by: \w+, order: \w+, max: \d+, page: \d+ }
+
+user_new:
+  url:             /nuevo/usuario
+  param:           { module: User, action: edit }
+
+user_edit:
+  url:             /editar/usuario/:slug
+  param:           { module: User, action: edit }
+  requirements:    { slug: '[\w-]+' }
+
+user_delete:
+  url:             /eliminar/usuario/:slug
+  param:           { module: User, action: delete }
+  requirements:    { slug: '[\w-,]+' }
+
+###########################
+######### Log #############
+###########################
+
+#Log
+log_login:
+  url:             /
+  param:           { module: Log, action: login }
+  
+log_logout:
+  url:             /logout
+  param:           { module: Log, action: logout }
+
+
+
+
+
+###########################
+######### General #########
+###########################
+
+#default
+default_disabled:
+  url:             /default/disabled
+  param:           { module: default, action: disabled }
+
+default_error404:
+  url:             /default/error404
+  param:           { module: default, action: error404 }
+
+default_login:
+  url:             /default/login
+  param:           { module: default, action: login }
+
+default_secure:
+  url:             /default/secure
+  param:           { module: default, action: secure }
+
+
+
+#Error
+error_delete_error:
+  url:             /error/delete_error
+  param:           { module: Error, action: deleteError }
+
+
+#Generic
+generic_get_attribute_value:
+  url:             /generic/get_attribute_value
+  param:           { module: Generic, action: getAttributeValue }
+
+generic_add_dynamic_form:
+  url:             /generic/add_dynamic_form
+  param:           { module: Generic, action: addDynamicForm }
+
+generic_remove_dynamic_form:
+  url:             /generic/remove_dynamic_form
+  param:           { module: Generic, action: removeDynamicForm }
+
+
+#Home
+home:
+  url:             /inicio
+  param:           { module: Home, action: show }
+  
+##############################
+######### Default ############
+##############################
+
+homepage:
+  url:             /
+  param:           { module: Log, action: login }
+
+default:
+  url:             /:module/:action/*
+

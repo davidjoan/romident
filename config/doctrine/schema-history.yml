@@ -1,0 +1,69 @@
+MedicalHistory:
+  tableName:                           t_medical_history
+  actAs:
+    SluggableExt:                      { fields: [ name ] }
+    Timestampable:
+  columns:
+    id:                                { type: integer  , length: 20 , primary: true    , autoincrement: true                                                  }
+    name:                              { type: string   , length: 200                   , notnull: true                                                        } 
+    description:                       { type: string   , length: 5000                  , notnull: false, default: ''                                          }                                                        
+    active:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           } 
+  relations:
+    Patient:                           { class: Patient , local: medical_history_id  , foreign: patient_id , refClass: PatientMedicalHistory , alias: Patients }
+  indexes:
+    i_name:                            { fields: [ name ]                                                                                                      }
+    i_active:                          { fields: [ active ]                                                                                                    }
+  options:
+    symfony:                           { filter: false, form: true }
+    boolean_columns:                   [ active ]
+    
+    
+
+
+DentalHistory:
+  tableName:                           t_dental_history
+  actAs:
+    SluggableExt:                      { fields: [ name ] }
+    Timestampable:
+  columns:
+    id:                                { type: integer  , length: 20 , primary: true    , autoincrement: true                                                  }
+    name:                              { type: string   , length: 200                   , notnull: true                                                        } 
+    description:                       { type: string   , length: 5000                  , notnull: false, default: ''                                          }                                                        
+    active:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           } 
+  relations:
+    Patient:                           { class: Patient , local: dental_history_id  , foreign: patient_id , refClass: PatientDentalHistory , alias: Patients   }
+  indexes:
+    i_name:                            { fields: [ name ]                                                                                                      }
+    i_active:                          { fields: [ active ]                                                                                                    }
+  options:
+    symfony:                           { filter: false, form: true }
+    boolean_columns:                   [ active ]
+    
+    
+PatientMedicalHistory:
+  tableName:                      t_patient_medical_history
+  actAs:
+    Timestampable:
+  columns:
+    patient_id:                      { type: integer  , length: 20 , primary: true                                                                          }
+    medical_history_id:              { type: integer  , length: 20 , primary: true                                                                          }
+  indexes:
+    i_created_at:                    { fields: created_at                                                                                                   }
+    i_updated_at:                    { fields: updated_at                                                                                                   }
+  relations:
+    Patient:                         { class: Patient         , local: patient_id         , foreign: id      , type: one      , alias: Patient        , onDelete: CASCADE , onUpdate: CASCADE }
+    MedicalHistory:                  { class: MedicalHistory  , local: medical_history_id , foreign: id      , type: one      , alias: MedicalHistory , onDelete: CASCADE , onUpdate: CASCADE }
+    
+PatientDentalHistory:
+  tableName:                      t_patient_dental_history
+  actAs:
+    Timestampable:
+  columns:
+    patient_id:                      { type: integer  , length: 20 , primary: true                                                                          }
+    dental_history_id:               { type: integer  , length: 20 , primary: true                                                                          }
+  indexes:
+    i_created_at:                    { fields: created_at                                                                                                   }
+    i_updated_at:                    { fields: updated_at                                                                                                   }
+  relations:
+    Patient:                         { class: Patient         , local: patient_id        , foreign: id      , type: one      , alias: Patient       , onDelete: CASCADE , onUpdate: CASCADE }
+    DentalHistory:                   { class: DentalHistory   , local: dental_history_id , foreign: id      , type: one      , alias: DentalHistory , onDelete: CASCADE , onUpdate: CASCADE }    

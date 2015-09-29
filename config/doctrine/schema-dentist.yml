@@ -1,0 +1,28 @@
+Dentist:
+  tableName:                           t_dentist
+  actAs:
+    SluggableExt:                      { fields: [ firstname ] }
+    Timestampable:
+  columns:
+    id:                                { type: integer  , length: 20 , primary: true    , autoincrement: true                                                  }
+    firstname:                         { type: string   , length: 100                   , notnull: true                                                        } 
+    lastname:                          { type: string   , length: 100                   , notnull: true                                                        }
+    gender:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           }
+    email:                             { type: string   , length: 100                   , notnull: true                                                        }
+    home_phones:                       { type: string   , length: 200                   , notnull: true                                                        }
+    office_phones:                     { type: string   , length: 200                   , notnull: true                                                        }
+    mobile_phone:                      { type: string   , length: 200                   , notnull: false                                                       }
+    fax:                               { type: string   , length: 200                   , notnull: false                                                       }
+    description:                       { type: string   , length: 5000                  , notnull: false, default: ''                                          }
+    active:                            { type: string   , length: 1  , fixed: true      , notnull: true , default: 1                                           }
+  indexes:
+    i_firstname:                       { fields: [ firstname ]                                                                                                 }
+    i_lastname:                        { fields: [ lastname ]                                                                                                  }
+    u_email:                           { fields: [ email ]                              , type: unique                                                         }
+    i_active:                          { fields: [ active ]                                                                                                    }
+  relations:
+    Titular:                           { class: Titular    , local: id,   foreign: dentist_id   , type: many , alias: Titulars                                 }   
+  options:
+    symfony:                           { filter: false, form: true }
+    boolean_columns:                   [ active ]
+    

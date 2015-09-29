@@ -1,0 +1,88 @@
+Dentist:
+  Dentist_1:
+    firstname: Flor
+    lastname: 'Mendoza Ramos'
+    gender: '1'
+    email: romident@hotmail.com
+    home_phones: '3926855'
+    office_phones: '3926855'
+    mobile_phone: '997331775'
+    fax: '997280378'
+    description: '<p>jajajajajaja</p>'
+    active: '1'
+Holder:
+  Holder_1:
+    code: '00001000'
+    firstname: 'David Joan'
+    lastname: 'Tataje Mendoza'
+    gender: '1'
+    company: 'DATA Solutions'
+    email: new.skin007@gmail.com
+    home_phones: '3926855'
+    mobile_phone: '997280378'
+    description: '<p>etc</p>'
+    active: '1'
+    
+Patient:
+  Patient_1:
+    Holder: Holder_1
+    firstname: 'David Joan'
+    lastname: 'Tataje Mendoza'
+    gender: '1'
+    date_of_birth: '1987-05-08 00:00:00'
+    description: '<p>ja ja ja</p>'
+    treatments: sdsd
+    brush_teeth: adas
+    different_brush: sdssd
+    consultation: vdfdf
+    type: '1'
+    active: '1'
+
+MedicalHistory:
+  MedicalHistory_1:
+    name: Es alergico a alguna sustancia o medicamento
+  MedicalHistory_2:
+    name: Ha sido intervenido quirurgicamente alguna vez
+  MedicalHistory_3:
+    name: Consume algun medicamento
+  MedicalHistory_4:
+    name: Presenta problemas con anestesia general
+  MedicalHistory_5:
+    name: Reacciones a la anestesia dental
+  MedicalHistory_6:
+    name: Padece hemorragias o sangrados
+  MedicalHistory_7:
+    name: Padece Diabetes Mellitus
+  MedicalHistory_8:
+    name: Padece Diabetes Mellitus
+  MedicalHistory_9:
+    name: Padece Fiebre Reumatica
+  MedicalHistory_10:
+    name: Padece de Asma Broquial
+  MedicalHistory_11:
+    name: Padece VHI SIDA
+  MedicalHistory_12:
+    name: Padece Enfermedades Cardiovasculares
+  MedicalHistory_13:
+    name: Padece Enfermedades Respiratorias
+  MedicalHistory_14:
+    name: Esta Ud Embarazada
+  MedicalHistory_15:
+    name: Padecio alguna enfermedad grave recientemente
+  MedicalHistory_16:
+    name: Consume Ud Alcohol
+  MedicalHistory_17:
+    name: Fuma
+
+DentalHistory:
+  DentalHistory_1:
+    name: Molestia o dolor en boca
+  DentalHistory_2:
+    name: Mal olor o mal sabor de boca
+  DentalHistory_3:
+    name: Le sangran las encias
+  DentalHistory_4:
+    name: Siente sus dientes moviles aprieta o rechina sus dientes
+  DentalHistory_5:
+    name: Malos habitos orofaciales
+
